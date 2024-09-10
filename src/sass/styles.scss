@@ -1,0 +1,50 @@
+body {
+  font-family: system-ui;
+  margin: 0;
+}
+
+@mixin gradient($clr-1: red, $clr-2: blue, $angle: 45deg) {
+  background: linear-gradient($angle, $clr-1, $clr-2);
+}
+
+@mixin underline($w, $h, $clr, $m) {
+  content: ' ';
+  display: block;
+  width: $w;
+  height: $h;
+  background-color: $clr;
+  margin-inline: auto;
+  margin-block: $m;
+}
+
+@mixin ui-element($size, $color, $bg-color, $hover-color, $hover-bg-color) {
+  padding-inline: calc($size * 3);
+  padding-block: $size;
+  color: $color;
+  background-color: $bg-color;
+
+  &:hover,
+  &:focus {
+    color: $hover-color;
+    background-color: $hover-bg-color;
+  }
+}
+
+.section-one,
+.section-two,
+.section-three {
+  text-align: center;
+  padding: 10vh 0;
+
+  a {
+    @include ui-element($size: 1rem, $color: #fff, $bg-color: orange, $hover-color: orange, $hover-bg-color: #fff);
+  }
+
+  p {
+    @include ui-element($size: 1rem, $color: #fff, $bg-color: orange, $hover-color: orange, $hover-bg-color: #fff);
+  }
+}
+
+.title::after {
+  @include underline($w: 100px, $h: 5px, $clr: red, $m: 1rem);
+}
